@@ -6,7 +6,7 @@ class Postgres(BaseModel):
 
     def connect_postgres():
         conn = psycopg2.connect(
-            database='contacts', host='localhost', user='postgres', password='custelinha')
+            database='containers-us-west-179.railway.app', user='postgres', password='grT1581tkP6rYZy9DXVQ')
 
         cur = conn.cursor()
 
