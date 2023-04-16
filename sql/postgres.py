@@ -1,3 +1,5 @@
+import os
+
 import psycopg2
 from pydantic import BaseModel
 
@@ -6,7 +8,7 @@ class Postgres(BaseModel):
 
     def connect_postgres():
         conn = psycopg2.connect(
-            database='containers-us-west-179.railway.app', user='postgres', password='grT1581tkP6rYZy9DXVQ')
+            database=os.environ['DATA_BASE'], user=os.environ['USER_POSTGRES'], password=os.environ['PASSWORD_POSTGRES'])
 
         cur = conn.cursor()
 
