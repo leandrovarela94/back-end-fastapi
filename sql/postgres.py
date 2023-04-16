@@ -1,15 +1,21 @@
 import os
 
 import psycopg2
+from dotenv import load_dotenv
 from pydantic import BaseModel
+
+load_dotenv()
+
+database_postgres = os.environ["DATABASE"]
+user_postgres = os.environ["USER_POSTGRES"]
+password_postgres = os.environ["PASSWORD_POSTGRES"]
 
 
 class Postgres(BaseModel):
 
     def connect_postgres():
         conn = psycopg2.connect(
-            database=os.environ['DATA_BASE'], user=os.environ['USER_POSTGRES'], password=os.environ['PASSWORD_POSTGRES'])
-
+            database=database_postgres, user=user_postgres, password=password_postgres)
         cur = conn.cursor()
 
         return cur, conn
