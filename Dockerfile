@@ -8,6 +8,9 @@ COPY ./poetry.lock /
 COPY ./pyproject.toml /
 
 RUN apt-get update -y && apt-get install curl -y \
+    && export MYSQLCLIENT_CFLAGS=`pkg-config mysqlclient --cflags` \
+    && export MYSQLCLIENT_LDFLAGS=`pkg-config mysqlclient --libs` \
+    && pip install mysqlclient -y \
     && curl -sSL https://install.python-poetry.org | python3 - \
     && poetry install \
     && apt-get remove curl -y 
