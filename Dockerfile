@@ -21,7 +21,7 @@ RUN apt-get update -y && apt-get install curl -y \
     && poetry config virtualenvs.create false \
     && poetry install \
     && apt-get remove curl -y \
-    && apt-get install myslqclient -y
+    && $ sudo apt-get install python3-dev default-libmysqlclient-dev build-essential
 
 COPY . .
 WORKDIR /app
