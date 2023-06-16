@@ -83,7 +83,7 @@ version = "2.1.1"
 description = "Python interface to MySQL"
 category = "main"
 optional = false
-python-versions = ">=3.5"
+python-versions = ">=3.10"
 
 [[package]]
 name = "pydantic"
