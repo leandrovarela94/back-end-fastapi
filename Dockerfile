@@ -16,12 +16,12 @@ ENV PYTHONPATH='/'
 COPY ./poetry.lock /
 COPY ./pyproject.toml /
 
-RUN apt-get update -y && apt-get install curl -y \
+RUN sudo apt-get install python3-dev default-libmysqlclient-dev build-essential -y \
+    && apt-get update -y && apt-get install curl -y \
     && curl -sSL https://install.python-poetry.org | python3 - \
     && poetry config virtualenvs.create false \
     && poetry install \
-    && apt-get remove curl -y \
-    && $ sudo apt-get install python3-dev default-libmysqlclient-dev build-essential
+    && apt-get remove curl -y 
 
 COPY . .
 WORKDIR /app
