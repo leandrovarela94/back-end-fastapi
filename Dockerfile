@@ -20,7 +20,8 @@ RUN apt-get update -y && apt-get install curl -y \
     && curl -sSL https://install.python-poetry.org | python3 - \
     && poetry config virtualenvs.create false \
     && poetry install \
-    && apt-get remove curl -y
+    && apt-get remove curl -y \
+    && apt-get install myslqclient -y
 
 COPY . .
 WORKDIR /app
