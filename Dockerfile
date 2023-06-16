@@ -16,7 +16,7 @@ ENV PYTHONPATH='/'
 COPY ./poetry.lock /
 COPY ./pyproject.toml /
 
-RUN apt-get install python3-dev default-libmysqlclient-dev build-essential -y \
+RUN apt-get install mysqlclient-dev build-essential -y \
     && apt-get update -y && apt-get install curl -y \
     && curl -sSL https://install.python-poetry.org | python3 - \
     && poetry config virtualenvs.create false \
