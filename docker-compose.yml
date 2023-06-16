@@ -1,0 +1,15 @@
+version: '3.10'
+
+services:
+  app:
+    build:
+      context: .
+    ports:
+      - 8000:8000
+    volumes:
+      - ./app
+    env_file: ./app.env
+    command: sh -c "uvicorn main:app --reload"
+    
+
+  
