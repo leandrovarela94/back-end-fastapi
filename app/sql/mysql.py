@@ -12,7 +12,7 @@ user_mysql = os.environ["USER_MYSQL"]
 password_mysql = os.environ["PASSWORD_MYSQL"]
 
 
-class Mysql:
+class Mysql(BaseModel):
 
     def connect_mysql():
         try:
