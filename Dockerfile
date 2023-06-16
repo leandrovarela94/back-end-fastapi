@@ -1,24 +1,21 @@
+# Imagem base
 FROM python:3.10-slim
 
-ENV PYTHONUNBUFFERED 1
-ENV PATH="/root/.local/bin:$PATH"
-ENV PYTHONPATH='/'
-
+# Define o diretório de trabalho
 WORKDIR /app
 
-COPY . .
+# Copia os arquivos Pipfile e Pipfile.lock para o diretório de trabalho
+COPY Pipfile Pipfile.lock /app/
 
-RUN python3 -m venv /opt/venv
+# Instala o pipenv
+RUN pip install pipenv
 
-# This is wrong!
-RUN . /opt/venv/bin/activate
+# Instala as dependências do projeto
+RUN pipenv install --system --deploy
 
-# Install dependencies:
-COPY /app/requirements.txt .
-RUN pip install --upgrade pip
-RUN pip install -r requirements.txt
+# Copia o restante dos arquivos do projeto para o diretório de trabalho
+COPY . /app
 
-
-
-
+# Comando de execução do container
+CMD ["python", "app.py"]
 
