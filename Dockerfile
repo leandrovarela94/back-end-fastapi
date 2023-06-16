@@ -14,6 +14,8 @@ RUN apt-get update \
     && apt-get install -y default-mysql-client
 RUN pip install -r requirements.txt
 
-
 COPY . .
+
+CMD ["python","uvicorn main:app --reload"]
+
 
