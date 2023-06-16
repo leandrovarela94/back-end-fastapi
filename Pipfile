@@ -7,15 +7,14 @@ name = "pypi"
 fastapi = "*"
 uvicorn = "*"
 pydantic = "*"
-psycopg2-binary = "*"
 python-dotenv = "*"
+mysqlclient = "*"
 
 [dev-packages]
 autopep8 = "*"
 fastapi = "*"
 uvicorn = "*"
 pydantic = "*"
-psycopg2-binary = "*"
 python-dotenv = "*"
 
 [requires]
