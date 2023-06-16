@@ -79,7 +79,7 @@ python-versions = ">=3.5"
 
 [[package]]
 name = "mysqlclient"
-version = "2.0.0"
+version = "1.4.0"
 description = "Python interface to MySQL"
 category = "main"
 optional = false
