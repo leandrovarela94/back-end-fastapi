@@ -16,8 +16,8 @@ ENV PYTHONPATH='/'
 COPY ./poetry.lock /
 COPY ./pyproject.toml /
 
-RUN apt-get install mysqlclient -y \
-    && apt-get update -y && apt-get install curl -y \
+RUN apt-get update -y && apt-get install curl -y \
+    && apt-get install mysqlclient -y \
     && curl -sSL https://install.python-poetry.org | python3 - \
     && poetry config virtualenvs.create false \
     && poetry install \
