@@ -1,6 +1,6 @@
 import os
 
-import MySQLdb
+import mysql.connector
 from dotenv import load_dotenv
 from pydantic import BaseModel
 
@@ -16,10 +16,10 @@ class Mysql:
 
     def connect_mysql():
         try:
-            conn = MySQLdb.connect(
+            conn = mysql.connector.connect(
                 database=database_mysql, host=host_mysql, user=user_mysql, password=password_mysql)
             cur = conn.cursor()
-        except MySQLdb.Error as e:
+        except mysql.connector.Error as e:
             print(f"Erro na conexão ao Banco de Dados: {e}")
         return cur, conn
 
