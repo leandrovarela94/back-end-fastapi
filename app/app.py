@@ -1,6 +1,6 @@
+import uvicorn
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
-
 from models.contact import Contact
 from services.contact_services import ContactSevices
 
@@ -69,3 +69,7 @@ def update_contact(contact: Contact, id: int):
         contact, id)
 
     return {f"Sucess Updated"}
+
+
+if __name__ == "__main__":
+    uvicorn.run(app, host="0.0.0.0", port=8000)
