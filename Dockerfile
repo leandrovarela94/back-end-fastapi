@@ -1,12 +1,19 @@
 FROM python:3.10-slim
 
-ENV PYTHONUNBUFFERED 1
-ENV PATH="/root/.local/bin:$PATH"
-ENV PYTHONPATH='/'
+WORKDIR /app
 
-COPY ./Pipfile.lock .
-COPY ./Pipfile .
+RUN python3 -m venv /opt/venv
 
-RUN apt-get update && apt-get install -y --no-install-recommends && apt-get install -y python3-pip && pip install --upgrade pip && pip install pipenv && pipenv install --dev
+# This is wrong!
+RUN . /opt/venv/bin/activate
+
+# Install dependencies:
+COPY /app/requirements.txt .
+RUN pip install --upgrade pip
+RUN apt-get update \
+    && apt-get install -y default-mysql-client
+RUN pip install -r requirements.txt
+
 
 COPY . .
+
