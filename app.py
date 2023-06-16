@@ -1,5 +1,6 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
+
 from models.contact import Contact
 from services.contact_services import ContactSevices
 
@@ -17,7 +18,7 @@ app.add_middleware(
 @app.get("/contacts/")
 async def read_all():
 
-    result = ContactSevices.get_contact_postgres()
+    result = ContactSevices.get_contact_mysql()
 
     response_final = [{
         "id": item[0],
@@ -33,7 +34,7 @@ async def read_all():
 @app.get("/contacts/{id}")
 async def read_one(id: int):
 
-    result = ContactSevices.get_one_contacts_postgres(id)
+    result = ContactSevices.get_one_contacts_mysql(id)
 
     response_final = [{
         "id": item[0],
@@ -49,7 +50,7 @@ async def read_one(id: int):
 @app.post("/contacts/")
 def create_contact(contact: Contact):
 
-    ContactSevices.post_contacts_postgres(contact)
+    ContactSevices.post_contacts_mysql(contact)
 
     return {f"Sucess Created"}
 
@@ -57,14 +58,14 @@ def create_contact(contact: Contact):
 @app.delete("/contacts/{id}")
 def delete_contact(id: int):
 
-    x = ContactSevices.delete_contact_postgres(id)
+    ContactSevices.delete_contact_mysql(id)
     return {f"Sucess : Deleted"}
 
 
 @app.put("/contacts/{id}")
 def update_contact(contact: Contact, id: int):
 
-    x = ContactSevices.update_contact_postgres(
+    ContactSevices.update_contact_mysql(
         contact, id)
 
     return {f"Sucess Updated"}
