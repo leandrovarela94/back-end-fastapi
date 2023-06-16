@@ -12,5 +12,5 @@ RUN pip install pipenv
 
 
 
-COPY ./app /app
+COPY . .
 WORKDIR /app
