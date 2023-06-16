@@ -7,11 +7,9 @@ ENV PYTHONPATH='/'
 COPY ./poetry.lock /
 COPY ./pyproject.toml /
 
-RUN apt-get update -y && apt-get install curl -y \
-    && curl -sSL https://install.python-poetry.org | python3 - \
-    && poetry config virtualenvs.create false \
-    && poetry install \
-    && apt-get remove curl -y
+RUN apt-get update -y && apt-get install pip -y
+RUN pip install pipenv 
+
 
 
 COPY ./app /app
