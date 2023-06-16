@@ -1,7 +1,6 @@
 FROM python:3.10-slim
 
-WORKDIR /app
-
+WORKDIR /app .
 RUN python3 -m venv /opt/venv
 
 # This is wrong!
