@@ -16,4 +16,4 @@ RUN pipenv install --system --deploy
 
 
 # Comando de execução do container
-CMD ["python", "app.py"]
+# CMD ["python", "app.py"]
