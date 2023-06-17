@@ -2,14 +2,14 @@
 FROM python:3.10-slim
 
 # Define o diretório de trabalho
-WORKDIR /root
+WORKDIR /
 
 COPY . .
 # Copia os arquivos Pipfile e Pipfile.lock para o diretório de trabalho
 
 # COPY Pipfile Pipfile.lock ./
 # Instala o pipenv
-RUN pip install pipenv --upgrade
+RUN pip install pip --upgrade
 RUN pip install pipenv
 
 # Instala as dependências do projeto
