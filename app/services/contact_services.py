@@ -24,7 +24,7 @@ class ContactSevices(BaseModel):
     def post_contacts_mysql(contact: Contact, Body=(...)):
 
         query = f"INSERT INTO list_contacts (name,phone,email) VALUES(%s,%s,%s)"
-        val = ({contact.name}, {contact.phone}, {contact.email})
+        val = (contact.name, contact.phone, contact.email)
         cur.execute(query, val)
 
         conn.commit()
@@ -37,7 +37,7 @@ class ContactSevices(BaseModel):
 
     def update_contact_mysql(contact, id):
         query = f"UPDATE list_contacts SET name = %s, phone = %s, email = %s WHERE id = {id} "
-        val = ({contact.name}, {contact.phone}, {contact.email})
+        val = (contact.name, contact.phone, contact.email)
         cur.execute(query, val)
 
         conn.commit()
