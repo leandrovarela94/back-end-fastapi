@@ -4,6 +4,7 @@ FROM python:3.10-slim
 # Define o diretório de trabalho
 WORKDIR /app
 
+EXPOSE 8000
 COPY . /app
 # Copia os arquivos Pipfile e Pipfile.lock para o diretório de trabalho
 
