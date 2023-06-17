@@ -9,6 +9,7 @@ COPY . .
 
 # COPY Pipfile Pipfile.lock ./
 # Instala o pipenv
+RUN pip install pipenv --upgrade
 RUN pip install pipenv
 
 # Instala as dependências do projeto
@@ -16,4 +17,4 @@ RUN pipenv install --system --deploy
 
 
 # Comando de execução do container
-# CMD ["python", "app.py"]
+CMD ["python", "app.py"]
