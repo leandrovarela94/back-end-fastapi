@@ -1,6 +1,5 @@
-from pydantic import BaseModel
-
 from models.contact import Contact
+from pydantic import BaseModel
 from sql.mysql import Mysql
 
 cur, conn = Mysql.connect_mysql()

@@ -8,6 +8,13 @@ services:
       - 8000:8000
     volumes:
       - app-volume:/app
+    environment:
+      - DATABASE=contact-book
+      - USER_MYSQL=39tdkoohr9l276q08y7z
+      - PASSWORD_MYSQL=pscale_pw_luUXwsfiqwC8lWnpFjNH5FWpy1HyQe2Y2JhZ4bTMSMI
+      - HOSTNAME_MYSQL=aws.connect.psdb.cloud
+
+
 
 volumes:
   app-volume:

@@ -1,10 +1,7 @@
 import os
 
 import mysql.connector
-from dotenv import load_dotenv
 from pydantic import BaseModel
-
-load_dotenv()
 
 database_mysql = os.environ["DATABASE"]
 host_mysql = os.environ["HOSTNAME_MYSQL"]
@@ -19,9 +16,10 @@ class Mysql(BaseModel):
             conn = mysql.connector.connect(
                 database=database_mysql, host=host_mysql, user=user_mysql, password=password_mysql)
             cur = conn.cursor()
+            return cur, conn
+
         except mysql.connector.Error as e:
             print(f"Erro na conexão ao Banco de Dados: {e}")
-        return cur, conn
 
     def disconnect_mysql(conn):
         if conn:
