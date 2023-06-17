@@ -2,7 +2,7 @@
 FROM python:3.10-slim
 
 # Define o diretório de trabalho
-WORKDIR /app .
+WORKDIR /app
 
 EXPOSE 8000
 
