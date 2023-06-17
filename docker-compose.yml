@@ -7,6 +7,6 @@ services:
     ports:
       - 8000:8000
     volumes:
-      - ./app:/app
+      - ./app:/app.py
     env_file: ./.env
     command: sh -c "uvicorn app:app --host 0.0.0.0 --reload"
