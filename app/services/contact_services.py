@@ -23,7 +23,7 @@ class ContactSevices(BaseModel):
 
     def post_contacts_mysql(contact: Contact, Body=(...)):
 
-        query = f"INSERT INTO list_contacts (name,phone,email) VALUES('{contact.name}','{contact.phone}','{contact.email}')"
+        query = f"INSERT INTO list_contacts (name,phone,email) VALUES({contact.name},{contact.phone},{contact.email})"
 
         cur.execute(query)
 
@@ -38,6 +38,6 @@ class ContactSevices(BaseModel):
     def update_contact_mysql(contact, id):
 
         cur.execute(
-            f"UPDATE list_contacts set name = '{contact.name}', phone = '{contact.phone}', email ='{contact.email}' WHERE id = {id} ")
+            f"UPDATE list_contacts set name = {contact.name}, phone = {contact.phone}, email ={contact.email}' WHERE id = {id} ")
 
         conn.commit()
