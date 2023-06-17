@@ -17,6 +17,3 @@ RUN pip install pipenv
 # Instala as dependências do projeto
 RUN pipenv install --system --deploy
 
-
-# Comando de execução do container
-CMD ["python", "app.py"]
