@@ -1,20 +1,19 @@
+# Imagem base
 FROM python:3.10-slim
 
-WORKDIR /app
-
-RUN python3 -m venv /opt/venv
-
-# This is wrong!
-RUN . /opt/venv/bin/activate
-
-# Install dependencies:
-COPY /app/requirements.txt .
-RUN pip install --upgrade pip
-RUN apt-get update \
-    && apt-get install -y default-mysql-client
-RUN pip install -r requirements.txt
+# Define o diretório de trabalho
+WORKDIR /root
 
 COPY . .
+# Copia os arquivos Pipfile e Pipfile.lock para o diretório de trabalho
+
+# COPY Pipfile Pipfile.lock ./
+# Instala o pipenv
+RUN pip install pipenv
+
+# Instala as dependências do projeto
+RUN pipenv install --system --deploy
 
 
-
+# Comando de execução do container
+# CMD ["python", "app.py"]
