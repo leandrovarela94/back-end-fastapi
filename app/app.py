@@ -1,7 +1,6 @@
 import uvicorn
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
-
 from models.contact import Contact
 from services.contact_services import ContactSevices
 
@@ -14,6 +13,11 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
+
+
+@app.get("/")
+def get_health():
+    return {f"Servidor Online"}
 
 
 @app.get("/contacts/")
