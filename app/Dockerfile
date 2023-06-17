@@ -4,12 +4,9 @@ FROM python:3.10-slim
 # Define o diretório de trabalho
 WORKDIR /app
 
-EXPOSE 8000
-
-COPY . .
+COPY . /app
 # Copia os arquivos Pipfile e Pipfile.lock para o diretório de trabalho
 
-# COPY Pipfile Pipfile.lock ./
 # Instala o pipenv
 RUN pip install pip --upgrade
 RUN pip install pipenv
@@ -17,3 +14,4 @@ RUN pip install pipenv
 # Instala as dependências do projeto
 RUN pipenv install --system --deploy
 
+CMD ["uvicorn", "app:app", "--host", "0.0.0.0", "--port", "8000"]
