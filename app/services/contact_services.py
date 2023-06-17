@@ -21,23 +21,26 @@ class ContactSevices(BaseModel):
 
         return cur.fetchall()
 
-    def post_contacts_mysql(contact: Contact, Body=(...)):
+    def post_contacts_mysql(contact: Contact):
 
         query = f"INSERT INTO list_contacts (name,phone,email) VALUES(%s,%s,%s)"
         val = (contact.name, contact.phone, contact.email)
         cur.execute(query, val)
 
         conn.commit()
+        conn.close()
 
     def delete_contact_mysql(id: int):
 
         cur.execute(f"DELETE FROM list_contacts WHERE id = ({id})")
 
         conn.commit()
+        conn.close()
 
     def update_contact_mysql(contact, id):
-        query = f"UPDATE list_contacts SET name = %s, phone = %s, email = %s WHERE id = {id} "
-        val = (contact.name, contact.phone, contact.email)
+        query = f"UPDATE list_contacts SET name = %s, phone = %s, email = %s WHERE id = %s "
+        val = (contact.name, contact.phone, contact.email, id)
         cur.execute(query, val)
 
         conn.commit()
+        conn.close()
